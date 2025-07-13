@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Resume Generator</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ✅ Video Background -->
+  <div class="video-background">
+    <video autoplay muted loop>
+      <source src="videoplayback.mp4" type="video/mp4" />
+    </video>
+  </div>
+
+  <!-- ✅ First Page Content -->
+  <div class="container content" id="cv-form">
+    <h1 class="text-center my-2">Resume Generator</h1>
+    <p class="text-center">By Kunal Sharma</p>
+
+    <div class="row">
+      <!-- Personal Info -->
+      <div class="col-md-6">
+        <h3>Personal Information</h3>
+        <div class="form-group">
+          <label for="nameField">Your Name</label>
+          <input type="text" id="nameField" placeholder="Enter Here" class="form-control">
+        </div>
+        <div class="form-group mt-2">
+          <label for="contactField">Your Contact</label>
+          <input type="text" id="contactField" placeholder="Enter Here" class="form-control">
+        </div>
+        <div class="form-group mt-2">
+          <label for="addressField">Your Address</label>
+          <textarea id="addressField" placeholder="Enter Here" class="form-control"></textarea>
+        </div>
+
+        <p class="text-secondary mt-3">Important Links</p>
+        <div class="form-group mt-2">
+          <label for="fbField">Facebook</label>
+          <input type="text" id="fbField" placeholder="Enter Here" class="form-control">
+        </div>
+        <div class="form-group mt-2">
+          <label for="instaField">Instagram</label>
+          <input type="text" id="instaField" placeholder="Enter Here" class="form-control">
+        </div>
+        <div class="form-group mt-2">
+          <label for="linkedField">LinkedIn</label>
+          <input type="text" id="linkedField" placeholder="Enter Here" class="form-control">
+        </div>
+      </div>
+
+      <!-- Professional Info -->
+      <div class="col-md-6">
+        <h3>Professional Information</h3>
+        <div class="form-group mt-2">
+          <label for="objectiveField">Objective</label>
+          <textarea id="objectiveField" rows="5" placeholder="Enter Here" class="form-control"></textarea>
+        </div>
+
+        <div class="form-group mt-2" id="we">
+          <label>Work Experience</label>
+          <textarea class="form-control weField" placeholder="Enter Here"></textarea>
+          <div class="container text-center mt-2">
+            <button onclick="addNewWEField()" class="btn btn-sm btn-primary">Add</button>
+          </div>
+        </div>
+
+        <div class="form-group mt-2" id="aq">
+          <label>Academic Qualification</label>
+          <textarea class="form-control eqField" placeholder="Enter Here"></textarea>
+          <div class="container text-center mt-2">
+            <button onclick="addNewAQField()" class="btn btn-sm btn-primary">Add</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ✅ Generate Button -->
+    <div class="container text-center mt-4">
+      <button onclick="generateCV()" class="btn btn-lg">Generate CV</button>
+    </div>
+  </div>
+
+  <!-- ✅ CV Template -->
+  <div class="container" id="cv-template">
+    <div class="row">
+      <div class="col-md-4 text-center py-5 background">
+        <img src="https://www.computerhope.com/jargon/g/guest-user.png" alt="User Image" class="img-fluid myimg" />
+        <div class="container mt-3">
+          <p id="nameT1">Kunal Sharma</p>
+          <p id="contactT">Contact</p>
+          <p id="addressT">Address</p>
+          <hr />
+          <p><a id="fbT" href="#">Facebook</a></p>
+          <p><a id="instaT" href="#">Instagram</a></p>
+          <p><a id="linkedT" href="#">LinkedIn</a></p>
+        </div>
+      </div>
+
+      <div class="col-md-8">
+        <h1 id="nameT2" class="text-center">Kunal Sharma</h1>
+
+        <div class="card">
+          <div class="card-header background">Objective</div>
+          <div class="card-body">
+            <p id="objectiveT">Your objective will appear here.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header background">Work Experience</div>
+          <div class="card-body">
+            <ul id="weT"><li>Work Experience</li></ul>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header background">Academic Qualification</div>
+          <div class="card-body">
+            <ul id="aqT"><li>Academic Details</li></ul>
+          </div>
+        </div>
+
+        <div class="container text-center mt-4">
+          <button onclick="printCV()" class="magic-btn"><span>Print CV</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ✅ JS Script -->
+  <script>
+    function addNewWEField() {
+      let newNode = document.createElement("textarea");
+      newNode.classList.add("form-control", "weField", "mt-2");
+      newNode.setAttribute("rows", 3);
+      newNode.setAttribute("placeholder", "Enter Here");
+      document.getElementById("we").insertBefore(newNode, document.getElementById("we").lastElementChild);
+    }
+
+    function addNewAQField() {
+      let newNode = document.createElement("textarea");
+      newNode.classList.add("form-control", "eqField", "mt-2");
+      newNode.setAttribute("rows", 3);
+      newNode.setAttribute("placeholder", "Enter Here");
+      document.getElementById("aq").insertBefore(newNode, document.getElementById("aq").lastElementChild);
+    }
+
+    function generateCV() {
+      document.getElementById("nameT1").innerText = document.getElementById("nameField").value;
+      document.getElementById("nameT2").innerText = document.getElementById("nameField").value;
+      document.getElementById("contactT").innerText = document.getElementById("contactField").value;
+      document.getElementById("addressT").innerText = document.getElementById("addressField").value;
+
+      document.getElementById("fbT").innerText = document.getElementById("fbField").value;
+      document.getElementById("fbT").href = document.getElementById("fbField").value;
+
+      document.getElementById("instaT").innerText = document.getElementById("instaField").value;
+      document.getElementById("instaT").href = document.getElementById("instaField").value;
+
+      document.getElementById("linkedT").innerText = document.getElementById("linkedField").value;
+      document.getElementById("linkedT").href = document.getElementById("linkedField").value;
+
+      document.getElementById("objectiveT").innerText = document.getElementById("objectiveField").value;
+
+      // Work Experience
+      let wes = document.getElementsByClassName("weField");
+      let str = "";
+      for (let e of wes) {
+        if (e.value.trim() !== "") {
+          str += `<li>${e.value}</li>`;
+        }
+      }
+      document.getElementById("weT").innerHTML = str;
+
+      // Academic Qualification
+      let aqs = document.getElementsByClassName("eqField");
+      let str2 = "";
+      for (let e of aqs) {
+        if (e.value.trim() !== "") {
+          str2 += `<li>${e.value}</li>`;
+        }
+      }
+      document.getElementById("aqT").innerHTML = str2;
+
+      document.getElementById("cv-form").style.display = "none";
+      document.getElementById("cv-template").style.display = "block";
+    }
+
+    function printCV() {
+      window.print();
+    }
+  </script>
+</body>
+</html>
