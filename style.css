@@ -1,0 +1,177 @@
+body {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #f9f9f9, #e0f7fa);
+  animation: fadeIn 1.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.container {
+  padding: 30px;
+}
+
+.background {
+  background: linear-gradient(135deg, #00e5ff, #1de9b6);
+  color: white;
+  border-radius: 10px 10px 0 0;
+  padding: 10px;
+}
+
+.myimg {
+  border: 4px solid white;
+  border-radius: 50%;
+  width: 180px;
+  margin-bottom: 20px;
+  animation: bounceIn 1.5s;
+}
+
+@keyframes bounceIn {
+  0% { transform: scale(0.5); opacity: 0; }
+  60% { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(1); }
+}
+
+.card {
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  margin-top: 20px;
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card-header {
+  border-radius: 15px 15px 0 0;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+h1#nameT2 {
+  font-size: 32px;
+  font-weight: 800;
+  margin-top: 20px;
+}
+
+p, a {
+  font-size: 16px;
+}
+
+a {
+  text-decoration: none;
+  color: #0077cc;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: #005b99;
+}
+
+/* Stylish Print Button */
+.magic-btn {
+  position: relative;
+  display: inline-block;
+  padding: 12px 30px;
+  color: black;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  transition: color 0.4s ease-in-out;
+  margin-bottom: 40px;
+}
+
+.magic-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, #00f7ff, #002fff, #8a2be2);
+  transition: left 0.4s;
+  z-index: 0;
+}
+
+.magic-btn:hover::before {
+  left: 0;
+}
+
+.magic-btn span {
+  position: relative;
+  z-index: 1;
+}
+
+.magic-btn:hover {
+  color: white;
+}
+
+/* Video background for first page */
+.video-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-color: black;
+}
+
+.video-background video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  z-index: -1;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  color: white;
+}
+
+label, h1, h3, p {
+  color: white !important;
+}
+
+input, textarea {
+  background-color: #ffffffcc;
+}
+
+/* ✅ Stylish "Generate CV" button on First Page */
+#cv-form .btn {
+  color: white !important;
+  font-weight: bold;
+  background-color: transparent !important;
+  border: 2px solid white !important;
+  border-radius: 30px !important;
+  padding: 10px 30px;
+  transition: all 0.3s ease;
+}
+
+#cv-form .btn:hover {
+  background-color: white !important;
+  color: black !important;
+}
+
+/* Hide CV template until generated */
+#cv-template {
+  display: none;
+}
